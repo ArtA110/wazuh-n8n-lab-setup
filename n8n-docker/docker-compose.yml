@@ -1,12 +1,15 @@
 version: "3.9"
 services:
   n8n:
-    image: n8nio/n8n
+    image: n8nio/n8n:1.123.21
     restart: always
     ports:
       - "5678:5678"
     environment:
       - GENERIC_TIMEZONE=UTC
+      - N8N_SECURE_COOKIE=false
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_RUNNERS_MODE=internal
     volumes:
       - n8n_data:/home/node/.n8n
     networks:
@@ -18,4 +21,4 @@ volumes:
 networks:
   soc-net:
     external: true
-
+    
